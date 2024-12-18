@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+#Check if the bucket name is provided
+if [ -z "$1" ]; then
+  echo "Usage: $0 <bucket-name>"
+  exit 1
+fi
+
+aws s3api create-bucket --bucket $1 --region ca-central-1 --create-bucket-configuration LocationConstraint=ca-central-1 --query Location --output text
